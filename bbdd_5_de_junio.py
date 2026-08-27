@@ -33,7 +33,7 @@ especialidades_demandadas = [
 ]
 
 # ==========================================
-# 1. PADRÓN OFICIAL CPAU (ARQUITECTOS)
+# 1. DATOS SINTÉTICOS BASADOS EN LA ESTRUCTURA DE REFERENCIA DEL CPAU (ARQUITECTOS)
 # ==========================================
 cant_cpau = 1500
 datos_cpau = []
@@ -59,7 +59,7 @@ for _ in range(cant_cpau):
 df_cpau = pl.DataFrame(datos_cpau)
 
 # ==========================================
-# 2. PADRÓN OFICIAL IERIC (OBREROS)
+# 2. DATOS SINTÉTICOS BASADOS EN CAMPOS DE REFERENCIA DEL SECTOR (OBREROS)
 # ==========================================
 cant_ieric = 5000
 datos_ieric = []
