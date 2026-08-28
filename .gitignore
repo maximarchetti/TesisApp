@@ -31,3 +31,5 @@ Thumbs.db
 # Archivos temporales
 *.tmp
 *.temp
+*.db-shm
+*.db-wal

@@ -196,7 +196,7 @@ def endpoint_recomendar(solicitud: SolicitudBusqueda):
 @app.post("/mapa", response_class=HTMLResponse)
 def endpoint_mapa(solicitud: SolicitudBusqueda):
     lat_f, lon_f, ubi_det, mejores = procesar_recomendacion(solicitud)
-    mapa = folium.Map(location=[lat_f, lon_f], zoom_start=13, tiles='CartoDB positron')
+    mapa = folium.Map(location=[lat_f, lon_f], zoom_start=13, tiles='OpenStreetMap')
     folium.Marker([lat_f, lon_f], popup="Tu Obra", icon=folium.Icon(color="blue", icon="building", prefix="fa")).add_to(mapa)
     for idx, row in mejores.iterrows():
         folium.Marker([row['ultima_latitud'], row['ultima_longitud']], popup=f"{row['nombre_apellido']} - {row['especialidad_uocra']}", icon=folium.Icon(color="green", icon="wrench", prefix="fa")).add_to(mapa)

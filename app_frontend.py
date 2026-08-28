@@ -1,8 +1,12 @@
+import os
 import pandas as pd
 import streamlit as st
 import requests
 import folium
 from streamlit_folium import st_folium
+
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
+
 st.set_page_config(page_title="App Arquitectos - IFTS", page_icon="🏗️", layout="centered")
 if 'datos_busqueda' not in st.session_state: st.session_state['datos_busqueda'] = None
 if 'rol_actual' not in st.session_state: st.session_state['rol_actual'] = "Arquitecto"
@@ -20,7 +24,7 @@ st.markdown("""
     .obrero-card h4, .obrero-card p, .obrero-card b, .obrero-card small { color: #333333 !important; }
     </style>
 """, unsafe_allow_html=True)
-API_URL = "http://127.0.0.1:8000"
+
 def cargar_nombre_usuario(user_id):
     try:
         res = requests.get(f"{API_URL}/usuario/{user_id}")
@@ -111,7 +115,7 @@ if st.session_state['rol_actual'] == "Arquitecto":
                     st.success(f"📌 Ubicación utilizada: {ubicacion['nombre']}")
                 if "lat" in ubicacion and "lon" in ubicacion:
                     st.subheader("🗺️ Ubicación Geográfica de la Oferta")
-                    mapa = folium.Map(location=[ubicacion['lat'], ubicacion['lon']], zoom_start=13, tiles='CartoDB positron')
+                    mapa = folium.Map(location=[ubicacion['lat'], ubicacion['lon']], zoom_start=13, tiles='OpenStreetMap')
                     folium.Marker([ubicacion['lat'], ubicacion['lon']], popup="Tu Obra", icon=folium.Icon(color="blue", icon="building", prefix="fa")).add_to(mapa)
                     for obs in obreros:
                         if "ultima_latitud" in obs and "ultima_longitud" in obs:
