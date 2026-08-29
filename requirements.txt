@@ -8,5 +8,4 @@ folium
 streamlit-folium
 requests
 Faker
-polars
-psycopg[binary]
+psycopg2-binary
