@@ -7,5 +7,4 @@ geopy
 folium
 streamlit-folium
 requests
-Faker
 psycopg2-binary
